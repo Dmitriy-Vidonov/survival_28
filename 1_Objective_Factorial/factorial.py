@@ -21,7 +21,7 @@ def squirrel(N: int) -> int:
 print('функция - ', squirrel(100))
 
 
-# черновики:
+# черновики с рассуждениями:
 
 factorial = 1
 
