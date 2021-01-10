@@ -19,4 +19,4 @@ def odometer(oksana):
     for i in range(len(time_massiv)):
         km += chet_massiv[i] * time_massiv[i]
 
-    return km
+    return km #вывод
