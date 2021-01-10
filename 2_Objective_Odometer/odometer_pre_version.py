@@ -1,23 +1,28 @@
-massiv = [10, 1, 20, 2, 20, 3]
+massiv = [20,2,30,6,10,7]
 chet_massiv = []
 nechet_massiv = []
-
-sum = 0
-avg = 0
+time_massiv = []
+km = 0
 
 # распределяем массивы по четности и нечетности индекса элемента массива
 for i in range(len(massiv)):
     if i % 2 == 0:
         chet_massiv.append(massiv[i])
-        sum += massiv[i]
     else:
         nechet_massiv.append(massiv[i])
 
-# находим среднее значение эл-тов нечетного массива
-avg = sum / len(chet_massiv)
+# преобразовывем нечетный массив во временной
+for i in range(len(nechet_massiv)):
+    if i == 0:
+        time_massiv.append(nechet_massiv[i])
+    else:
+        time_massiv.append(nechet_massiv[i] - nechet_massiv[i-1])
 
+# рассчитываем километраж
+for i in range(len(time_massiv)):
+    km += chet_massiv[i] * time_massiv[i]
+    
 print('chet =', chet_massiv)
 print('nechet =', nechet_massiv)
-print('последний элемент нечетного массива, t, время =', nechet_massiv[len(nechet_massiv)-1])
-print('среднее значение четного массива, V, скорость =', avg)
-print('километраж =', avg * nechet_massiv[len(nechet_massiv)-1])
+print('временной массив =', time_massiv)
+print('километраж =', km)
