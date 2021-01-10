@@ -4,11 +4,11 @@ def odometer(oksana):
     time_massiv = []
     km = 0
 
-    for i in range(len(massiv)):
+    for i in range(len(oksana)):
         if i % 2 == 0:
-            chet_massiv.append(massiv[i])
+            chet_massiv.append(oksana[i])
         else:
-            nechet_massiv.append(massiv[i])
+            nechet_massiv.append(oksana[i])
 
     for i in range(len(nechet_massiv)):
         if i == 0:
