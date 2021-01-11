@@ -39,6 +39,9 @@ x_coord = 0 # координаты по x, они же N, они же - инде
 y_coord = 0 # координаты по y, они же M, они же - индекс столбца
 step_length = 1 # длина шага завоевания за 1 день
 
+x_massiv_conquer = []
+y_massiv_conquer = []
+
 # заполнение точки массива исходя из координат
 for i in range(len(x_massiv)):
     x_coord = x_massiv[i]
@@ -46,17 +49,17 @@ for i in range(len(x_massiv)):
     a[x_coord][y_coord] = 1
 
     # заполнение по горизонтали
-    if y_coord >= (0 + 1):
+    if y_coord >= (0 + step_length):
         a[x_coord][y_coord - step_length] = 1
     
-    if y_coord <= (M - 2):
+    if y_coord <= (M - step_length*2):
         a[x_coord][y_coord + step_length] = 1
 
     # заполнение по вертикали
-    if x_coord >= (0 + 1):
+    if x_coord >= (0 + step_length):
         a[x_coord - step_length][y_coord] = 1
 
-    if x_coord <= (N - 2):
+    if x_coord <= (N - step_length*2):
         a[x_coord + step_length][y_coord] = 1
     
         
