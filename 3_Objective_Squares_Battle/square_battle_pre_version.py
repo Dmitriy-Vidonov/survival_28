@@ -1,12 +1,12 @@
 # создаем двумерный массив
-N = 3 # число строк матрицы
-M = 4 # число элементов в строке - число столбцов
+N = 7 # число строк матрицы
+M = 9 # число элементов в строке - число столбцов
 
 a = []
 for i in range(N):
     b = [] # на каждом шаге делаем очередной вложенный подсписок
     for j in range(M):
-        b.append(0)
+        b.append('-') # заполняем базовые значения массива
     a.append(b)
 
 # вывод массива массивов в чистом виде:
@@ -42,37 +42,42 @@ step_length = 1 # длина шага завоевания за 1 день
 x_massiv_conquer = []
 y_massiv_conquer = []
 
+dot = '1' # чем заполняем точки высадки и завоевания. хоть 1, хоть любой символ
+
 # заполнение точки массива исходя из координат
 for i in range(len(x_massiv)):
     x_coord = x_massiv[i]
     y_coord = y_massiv[i]
-    a[x_coord][y_coord] = 1
+    a[x_coord][y_coord] = dot
 
     # заполнение по горизонтали
     if y_coord >= (0 + step_length):
-        a[x_coord][y_coord - step_length] = 1
+        a[x_coord][y_coord - step_length] = dot
         
         # занесли координаты в промежуточный массив
         x_massiv_conquer.append(x_coord)
         y_massiv_conquer.append(y_coord - step_length)
     
     if y_coord <= (M - step_length*2):
-        a[x_coord][y_coord + step_length] = 1
+        a[x_coord][y_coord + step_length] = dot
         
+        # занесли координаты в промежуточный массив
         x_massiv_conquer.append(x_coord)
         y_massiv_conquer.append(y_coord + step_length)
 
 
     # заполнение по вертикали
     if x_coord >= (0 + step_length):
-        a[x_coord - step_length][y_coord] = 1
-
+        a[x_coord - step_length][y_coord] = dot
+        
+        # занесли координаты в промежуточный массив
         x_massiv_conquer.append(x_coord - step_length)
         y_massiv_conquer.append(y_coord)
 
     if x_coord <= (N - step_length*2):
-        a[x_coord + step_length][y_coord] = 1
+        a[x_coord + step_length][y_coord] = dot
 
+        # занесли координаты в промежуточный массив
         x_massiv_conquer.append(x_coord + step_length)
         y_massiv_conquer.append(y_coord)
     
