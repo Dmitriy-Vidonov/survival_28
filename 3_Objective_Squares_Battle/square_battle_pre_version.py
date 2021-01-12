@@ -15,11 +15,11 @@ for i in range(N):
 
 # задаем первичный массив для x-координат - он же для точек высадки
 x_massiv_landing_zones = []
-x_massiv_landing_zones = [4]
+x_massiv_landing_zones = [0, 8, 4, 0, 8]
 
 # задаем первичный массив для y-координат - он же для точек высадки
 y_massiv_landing_zones = []
-y_massiv_landing_zones = [4]
+y_massiv_landing_zones = [0, 8, 4, 8, 0]
 
 x_coord = 0 # координаты по x, они же N, они же - индекс строки
 y_coord = 0 # координаты по y, они же M, они же - индекс столбца
@@ -82,6 +82,7 @@ print()
 
 
 flag = 0
+days = 2
 
 while total_sum < N * M:
 
@@ -129,6 +130,11 @@ while total_sum < N * M:
                 x_massiv_landing_zones.append(x_coord + step_length)
                 y_massiv_landing_zones.append(y_coord)
 
+        # обновляем дни
+        days += 1
+        
+        # выводим количество дней
+        print('Дней прошло: ', days)
 
         # выводим матрицу на экран
         for x in range(len(a)): # главный цикл по числу строк - числу элементов массива а
@@ -196,6 +202,12 @@ while total_sum < N * M:
                 # занесли координаты в промежуточный массив
                 x_massiv_conquer.append(x_coord + step_length)
                 y_massiv_conquer.append(y_coord)
+        
+        # обновляем дни
+        days += 1
+        
+        # выводим количество дней
+        print('Дней прошло: ', days)
 
         # выводим матрицу на экран
         for x in range(len(a)): # главный цикл по числу строк - числу элементов массива а
