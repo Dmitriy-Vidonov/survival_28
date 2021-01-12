@@ -111,43 +111,35 @@ for i in range(len(x_massiv_conquer)):
     a[x_coord][y_coord] = dot
 
     # заполнение по горизонтали
-    if y_coord >= (0 + step_length):
+    if y_coord >= (0 + step_length) and a[x_coord][y_coord - step_length] != dot: # здесь в 'and' дополнительно проверяем, не заполнена ли ячейка ранее
         a[x_coord][y_coord - step_length] = dot
         
         # занесли координаты в промежуточный массив
-        if x_coord != dot:
-            x_massiv_landing_zones.append(x_coord)
-        if y_coord - step_length != dot:
-            y_massiv_landing_zones.append(y_coord - step_length)
+        x_massiv_landing_zones.append(x_coord)
+        y_massiv_landing_zones.append(y_coord - step_length)
     
-    if y_coord <= (M - step_length*2):
+    if y_coord <= (M - step_length * 2) and a[x_coord][y_coord + step_length] != dot:
         a[x_coord][y_coord + step_length] = dot
         
         # занесли координаты в промежуточный массив
-        if x_coord != dot:
-            x_massiv_landing_zones.append(x_coord)
-        if y_coord + step_length != dot:
-            y_massiv_landing_zones.append(y_coord + step_length)
+        x_massiv_landing_zones.append(x_coord)
+        y_massiv_landing_zones.append(y_coord + step_length)
 
 
     # заполнение по вертикали
-    if x_coord >= (0 + step_length):
+    if x_coord >= (0 + step_length) and a[x_coord - step_length][y_coord] != dot:
         a[x_coord - step_length][y_coord] = dot
         
         # занесли координаты в промежуточный массив
-        if x_coord - step_length != dot:
-            x_massiv_landing_zones.append(x_coord - step_length)
-        if y_coord != dot:
-            y_massiv_landing_zones.append(y_coord)
+        x_massiv_landing_zones.append(x_coord - step_length)
+        y_massiv_landing_zones.append(y_coord)
 
-    if x_coord <= (N - step_length*2):
+    if x_coord <= (N - step_length * 2) and a[x_coord + step_length][y_coord]:
         a[x_coord + step_length][y_coord] = dot
 
         # занесли координаты в промежуточный массив
-        if x_coord + step_length != dot:
-            x_massiv_landing_zones.append(x_coord + step_length)
-        if y_coord != dot:
-            y_massiv_landing_zones.append(y_coord)
+        x_massiv_landing_zones.append(x_coord + step_length)
+        y_massiv_landing_zones.append(y_coord)
 
 
 # выводим матрицу на экран
@@ -183,43 +175,35 @@ for i in range(len(x_massiv_landing_zones)):
     a[x_coord][y_coord] = dot
 
     # заполнение по горизонтали
-    if y_coord >= (0 + step_length):
+    if y_coord >= (0 + step_length) and a[x_coord][y_coord - step_length] != dot:
         a[x_coord][y_coord - step_length] = dot
         
         # занесли координаты в промежуточный массив
-        if x_coord != dot:
-            x_massiv_conquer.append(x_coord)
-        if y_coord - step_length != dot:
-            y_massiv_conquer.append(y_coord - step_length)
+        x_massiv_conquer.append(x_coord)
+        y_massiv_conquer.append(y_coord - step_length)
     
-    if y_coord <= (M - step_length*2):
+    if y_coord <= (M - step_length*2) and a[x_coord][y_coord + step_length] != dot:
         a[x_coord][y_coord + step_length] = dot
         
         # занесли координаты в промежуточный массив
-        if x_coord != dot:
-            x_massiv_conquer.append(x_coord)
-        if y_coord + step_length != dot:
-            y_massiv_conquer.append(y_coord + step_length)
+        x_massiv_conquer.append(x_coord)
+        y_massiv_conquer.append(y_coord + step_length)
 
 
     # заполнение по вертикали
-    if x_coord >= (0 + step_length):
+    if x_coord >= (0 + step_length) and a[x_coord - step_length][y_coord] != dot:
         a[x_coord - step_length][y_coord] = dot
         
         # занесли координаты в промежуточный массив
-        if x_coord - step_length != dot:
-            x_massiv_conquer.append(x_coord - step_length)
-        if y_coord != dot:
-            y_massiv_conquer.append(y_coord)
+        x_massiv_conquer.append(x_coord - step_length)
+        y_massiv_conquer.append(y_coord)
 
-    if x_coord <= (N - step_length*2):
+    if x_coord <= (N - step_length * 2) and a[x_coord + step_length][y_coord] != dot:
         a[x_coord + step_length][y_coord] = dot
 
         # занесли координаты в промежуточный массив
-        if x_coord + step_length != dot:
-            x_massiv_conquer.append(x_coord + step_length)
-        if y_coord != dot:
-            y_massiv_conquer.append(y_coord)
+        x_massiv_conquer.append(x_coord + step_length)
+        y_massiv_conquer.append(y_coord)
 
 
 # выводим матрицу на экран
