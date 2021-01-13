@@ -179,9 +179,5 @@ def ConquestCampaign(N: int, M: int, L: int, battalion):
 
             # обновляем flag
             flag += 1
-            
-    return days
 
-massiv = []
-massiv = [2,2, 3,4]
-print(ConquestCampaign(9, 9, 2, massiv))
+    return days
