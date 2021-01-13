@@ -1,10 +1,32 @@
 # создаем двумерный массив
-N = 20 # число строк матрицы
-M = 20 # число элементов в строке - число столбцов
+N = 9 # число строк матрицы
+M = 9 # число элементов в строке - число столбцов
+
+def_massiv = [2,2, 3,4] # наш массив, который мы передаем из функуции. чет - в x, нечет - в y
+
+x_massiv_landing_zones = [] # первичный массив для x-координат
+y_massiv_landing_zones = [] # первичный массив для y-координат
+
+x_massiv_conquer = [] # вторичный массив для x-координат
+y_massiv_conquer = [] # вторичный массив для y-координат
 
 total_sum = 0 # общая сумма элементов массива
 dot = 'BOOM' # чем заполняем точки высадки и завоевания. хоть 1, хоть любой символ
 empty = '----' # чем заполняем пустые точки массива. по сути можно тоже брать что угодно
+
+x_coord = 0 # координаты по x, они же N, они же - индекс строки
+y_coord = 0 # координаты по y, они же M, они же - индекс столбца
+step_length = 1 # длина шага завоевания за 1 день
+
+flag = 0 # флажок для разветвления циклов - запускаем тот или иной цикл в зависимости от флага
+days = 2 # задаем счетчик дней
+
+# раскидываем массив на массивы координат x и y
+for i in range(len(def_massiv)):
+    if i % 2 == 0:
+        x_massiv_landing_zones.append(def_massiv[i])
+    else:
+        y_massiv_landing_zones.append(def_massiv[i])
 
 a = []  # задаем рабочий массив
 for i in range(N):
@@ -12,22 +34,6 @@ for i in range(N):
     for j in range(M):
         b.append(empty) # заполняем базовые значения массива
     a.append(b)
-
-# задаем первичный массив для x-координат - он же для точек высадки
-x_massiv_landing_zones = []
-x_massiv_landing_zones = [0, 8, 4, 0, 8]
-
-# задаем первичный массив для y-координат - он же для точек высадки
-y_massiv_landing_zones = []
-y_massiv_landing_zones = [0, 8, 4, 8, 0]
-
-x_coord = 0 # координаты по x, они же N, они же - индекс строки
-y_coord = 0 # координаты по y, они же M, они же - индекс столбца
-step_length = 1 # длина шага завоевания за 1 день
-
-x_massiv_conquer = [] # вторичный массив для x-координат
-y_massiv_conquer = [] # вторичный массив для y-координат
-
 
 # заполнение точки массива исходя из координат
 for i in range(len(x_massiv_landing_zones)):
@@ -66,7 +72,6 @@ for i in range(len(x_massiv_landing_zones)):
         x_massiv_conquer.append(x_coord + step_length)
         y_massiv_conquer.append(y_coord)
     
-        
 # выводим матрицу на экран
 for x in range(len(a)): # главный цикл по числу строк - числу элементов массива а
     print()
@@ -79,10 +84,6 @@ print('x_massiv_conquer =', x_massiv_conquer)
 print('y_massiv_conquer =', y_massiv_conquer)
 print()
 
-
-
-flag = 0
-days = 2
 
 while total_sum < N * M:
 
