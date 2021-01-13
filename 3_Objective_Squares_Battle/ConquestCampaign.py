@@ -9,14 +9,14 @@ def ConquestCampaign(N: int, M: int, L: int, battalion):
     y_massiv_conquer = [] # вторичный массив для y-координат
 
     total_sum = 0 # общая сумма элементов массива
-    dot = 'BOOM' # чем заполняем точки высадки и завоевания. хоть 1, хоть любой символ
-    empty = '----' # чем заполняем пустые точки массива. по сути можно тоже брать что угодно
+    dot = '+' # чем заполняем точки высадки и завоевания
+    empty = '-' # чем заполняем пустые точки массива
 
-    x_coord = 0 # координаты по x, они же N, они же - индекс строки
-    y_coord = 0 # координаты по y, они же M, они же - индекс столбца
+    x_coord = 0 # координаты по x
+    y_coord = 0 # координаты по y
     step_length = 1 # длина шага завоевания за 1 день
 
-    flag = 0 # флажок для разветвления циклов - запускаем тот или иной цикл в зависимости от флага
+    flag = 0 # флажок для разветвления циклов
     days = 2 # задаем счетчик дней
 
     # раскидываем массив на массивы координат x и y
@@ -84,7 +84,7 @@ def ConquestCampaign(N: int, M: int, L: int, battalion):
                 a[x_coord][y_coord] = dot
 
                 # заполнение по горизонтали
-                if y_coord >= (0 + step_length) and a[x_coord][y_coord - step_length] != dot: # здесь в 'and' дополнительно проверяем, не заполнена ли ячейка ранее
+                if y_coord >= (0 + step_length) and a[x_coord][y_coord - step_length] != dot:
                     a[x_coord][y_coord - step_length] = dot
         
                     # занесли координаты в промежуточный массив
@@ -179,6 +179,7 @@ def ConquestCampaign(N: int, M: int, L: int, battalion):
 
             # обновляем flag
             flag += 1
+            
     return days
 
 massiv = []
