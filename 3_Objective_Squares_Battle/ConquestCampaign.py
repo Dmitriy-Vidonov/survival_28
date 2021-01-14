@@ -1,4 +1,4 @@
-def ConquestCampaign(N: int, M: int, L: int, battalion):
+def ConquestCampaign(N: int, M: int, L: int, battalion) -> int:
 
     a = []  # задаем рабочий массив
 
