@@ -1,5 +1,6 @@
 def ConquestCampaign(N: int, M: int, L: int, battalion) -> int:
 
+    a = []  # задаем рабочий массив
     x_massiv_landing_zones = [] # первичный массив для x-координат
     y_massiv_landing_zones = [] # первичный массив для y-координат
 
@@ -7,8 +8,8 @@ def ConquestCampaign(N: int, M: int, L: int, battalion) -> int:
     y_massiv_conquer = [] # вторичный массив для y-координат
 
     total_sum = 0 # общая сумма элементов массива
-    dot = 'BOOM' 
-    empty = '----' 
+    dot = 1 
+    empty = 0 
 
     x_coord = 0 # координаты по x, они же N, они же - индекс строки
     y_coord = 0 # координаты по y, они же M, они же - индекс столбца
@@ -24,7 +25,6 @@ def ConquestCampaign(N: int, M: int, L: int, battalion) -> int:
         else:
             y_massiv_landing_zones.append(battalion[i])
 
-    a = []  # задаем рабочий массив
     for i in range(N):
         b = [] # на каждом шаге делаем очередной вложенный подсписок
         for j in range(M):
@@ -69,9 +69,7 @@ def ConquestCampaign(N: int, M: int, L: int, battalion) -> int:
     
 
     while total_sum < N * M:
-
-    # ***************************************1 ветка******************************    
-
+  
         if flag % 2 == 0: # первая ветка:
 
             # очистим массивы для точек высадки:
@@ -117,7 +115,6 @@ def ConquestCampaign(N: int, M: int, L: int, battalion) -> int:
             # обновляем дни
             days += 1
         
-    
             # обновляем total_sum
             total_sum = 0
             for i in range(N):
@@ -127,9 +124,6 @@ def ConquestCampaign(N: int, M: int, L: int, battalion) -> int:
 
             # обновляем flag
             flag += 1
-
-
-    #####################  2 VETKA   ########################
 
         else:
 
@@ -176,7 +170,6 @@ def ConquestCampaign(N: int, M: int, L: int, battalion) -> int:
             # обновляем дни
             days += 1
         
-    
             # обновляем total_sum
             total_sum = 0
             for i in range(N):
@@ -189,8 +182,8 @@ def ConquestCampaign(N: int, M: int, L: int, battalion) -> int:
 
     return days
 
-battalion = [2,2, 2,2, 3,4]
-print(ConquestCampaign(3,4,3, battalion))
+battalion = [1,1, 1,1, 9,9, 9,9]
+print(ConquestCampaign(9,9, 3, battalion))
 
 
 
