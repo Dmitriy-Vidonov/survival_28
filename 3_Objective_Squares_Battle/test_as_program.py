@@ -235,4 +235,3 @@ while total_sum < N * M:
 
         print('total_sum =', total_sum)
         print('flag = ', flag)
-
