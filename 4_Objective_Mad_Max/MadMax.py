@@ -46,7 +46,12 @@ def MadMax(N: int, Tele):
                 Tele[i], Tele[j] = Tele[j], Tele[i]
 
     # сортировка массива от центра по убыванию
-    j = centre_coord + 1 
+    if N >= 3:
+        j = centre_coord + 1  
+    
+    else:
+        j = centre_coord
+    
     sort = Tele[j]
 
     for i in range(len(Tele)):
@@ -55,6 +60,3 @@ def MadMax(N: int, Tele):
                 Tele[i], Tele[j] = Tele[j], Tele[i]
 
     return Tele
-
-Tele = [7,6,4,2,8,9,1,5,3]
-print(MadMax(9, Tele))

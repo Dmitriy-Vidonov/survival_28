@@ -68,8 +68,13 @@ for i in range(0, len(tele)):
 print('tele =', tele)
 
 # сортирвока массива от центра по убыванию
-j = centre_coord + 1 
-sort_right = tele[j]
+if N >= 3:
+    j = centre_coord + 1 
+        
+else:
+    j = centre_coord
+    
+sort = Tele[j]
 
 for i in range(len(tele)):
     for j in range(centre_coord + 1, len(tele)):
