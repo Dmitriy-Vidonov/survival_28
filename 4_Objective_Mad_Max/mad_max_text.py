@@ -60,7 +60,7 @@ print(tele)
 j = 0
 sort_left = tele[j]
 
-for i in range(0, centre_coord):
+for i in range(0, len(tele)):
     for j in range(0, centre_coord):
         if tele[i] <= tele[j]:
             tele[i], tele[j] = tele[j], tele[i]
@@ -71,9 +71,9 @@ print('tele =', tele)
 j = centre_coord + 1 
 sort_right = tele[j]
 
-for i in range(centre_coord + 1, len(tele)):
+for i in range(len(tele)):
     for j in range(centre_coord + 1, len(tele)):
-        if tele[i] >= tele[j]:
+        if tele[i] >= tele[j] and tele[i] != max_el:
             tele[i], tele[j] = tele[j], tele[i]
 
 print('tele =', tele)
