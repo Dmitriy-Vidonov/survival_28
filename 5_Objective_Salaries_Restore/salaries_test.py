@@ -38,3 +38,9 @@ for i in range(len(salary)):
         salary_min_el_coord = i
 
 print('salary_min_el_coord =', salary_min_el_coord)
+
+
+# в salary ставим минимальный элемент по адресу, который равен адресу минимального элемента в ids
+salary[salary_min_el_coord], salary[ids_min_el_coord] = salary[ids_min_el_coord], salary[salary_min_el_coord]
+
+print('salary =', salary)
