@@ -39,7 +39,6 @@ def SynchronizingTables(N: int, ids: int, salary: int) -> int:
                 salary[k], salary[m] = salary[m], salary[k]            
 
     # в salary переставляем элементы по id-шникам ids_used_coords
-
     for i in range(len(ids_used_coords)):
         sort = ids_used_coords[i]
         sals[sort] = salary[i]
@@ -48,4 +47,4 @@ def SynchronizingTables(N: int, ids: int, salary: int) -> int:
     for k in sorted(sals.keys()):
         sorted_sal.append(sals[k])
     
-    return sorted_sal 
+    return sorted_sal
