@@ -48,4 +48,4 @@ def SynchronizingTables(N: int, ids: int, salary: int) -> int:
     for k in sorted(sals.keys()):
         sorted_sal.append(sals[k])
     
-    return sorted_sal
+    return sorted_sal 
