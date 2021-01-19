@@ -19,14 +19,14 @@ for x in range(len(ids)):
     # находим минимальный элемент в ids
     for i in range(len(ids)):
         for j in range(len(ids)):
-            if ids[i] <= ids_min_el and ids_min_el not in ids_used_els:
+            if ids[i] <= ids_min_el and ids[i] not in ids_used_els:
                 ids_min_el = ids[i]
 
     print('ids_min_el =', ids_min_el)
 
     # получаем координаты минимального элемента в ids
     for i in range(len(ids)):
-        if ids[i] == ids_min_el and ids_min_el not in ids_used_els:
+        if ids[i] == ids_min_el and ids[i] not in ids_used_els:
             ids_min_el_coord = i
 
     print('ids_min_el_coord =', ids_min_el_coord)
@@ -38,14 +38,14 @@ for x in range(len(ids)):
     # находим минимальный элемент в salary 
     for i in range(len(salary)):
         for j in range(len(salary)):
-            if salary[i] <= salary_min_el and salary_min_el not in salary_used_els:
+            if salary[i] <= salary_min_el and salary[i] not in salary_used_els:
                 salary_min_el = salary[i]
 
     print('salary_min_el =', salary_min_el)
 
     # получаем координаты минимального элемента в salary
     for i in range(len(salary)):
-        if salary[i] == salary_min_el and salary_min_el not in salary_used_els:
+        if salary[i] == salary_min_el and salary[i] not in salary_used_els:
             salary_min_el_coord = i
 
     print('salary_min_el_coord =', salary_min_el_coord)
@@ -67,5 +67,9 @@ for x in range(len(ids)):
 
     print('ids_used_els =', ids_used_els)
     print('ids_used_coords =', ids_used_coords)
+
+    print()
+    print('****************')
+    print()
 
 # выяснить, как сделать так, чтобы использованные элементы исключались из работы
