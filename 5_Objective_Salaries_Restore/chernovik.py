@@ -1,4 +1,5 @@
 ids = [50, 1, 1024]
+salary = [20000, 100000, 90000]
 
 ids_used_els = []
 ids_used_coords = []
@@ -6,7 +7,12 @@ ids_used_coords = []
 ids_min_el = 0
 ids_min_el_coord = 0
 
+sorted_sal = []
+
+sals = dict()
+
 for k in range(len(ids)):
+    
     # находим минимальный элемент в ids
     for x in range(len(ids)):
         if ids[x] in ids_used_els:
@@ -37,5 +43,23 @@ for k in range(len(ids)):
     print('************')
     print()
 
-# 1 - отсортировать по возрастанию список salary
-# 2 - в отсортированном salary переставить элементы по айдишкам из списка ids_used_coords
+# сортируем список salary по возрастанию
+for k in range(len(salary)):
+    for m in range(len(salary)):
+        if salary[k] <= salary[m]:
+            salary[k], salary[m] = salary[m], salary[k]
+
+print('salary =', salary)            
+
+# в salary переставляем элементы по id-шникам ids_used_coords
+# сначала заполняем словарь ключами из нужных нам кординат из ids_used_coords
+# и значениями из полученного списка ЗП после сортировки по возрастанию
+for i in range(len(ids_used_coords)):
+    sort = ids_used_coords[i]
+    sals[sort] = salary[i]
+    
+# упорядочиваем элементы словаря по номерам ключей и заносим в итоговый массив
+for k in sorted(sals.keys()):
+    sorted_sal.append(sals[k])
+    
+print('Отсортированные ЗП -', sorted_sal)
