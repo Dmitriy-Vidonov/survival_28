@@ -271,3 +271,79 @@ for i in range(len(massiv)-1):
   
 print('dlina =', dlina) # 22 - верный ответ
 
+print()
+print('**********************')
+print()
+
+# 8 - обработка линий до 7 и назад
+
+massiv = [1, 5]
+dlina = 0
+digit_counter = 0
+
+for i in range(len(massiv)-1):
+    
+    # если след. цифра равна текущей:
+    if massiv[i+1] == massiv[i]:
+        continue
+
+    elif massiv[i] == 6 and massiv[i+1] == 2: # если "6-2"
+        dlina += 1.5       
+    
+    elif massiv[i] == 2 and massiv[i+1] == 6: # если "2-6"
+        dlina += 1.5
+        
+    elif massiv[i] == 2 and massiv[i+1] == 7: # если "2-7"
+        dlina += 1.5
+        
+    elif massiv[i] == 7 and massiv[i+1] == 2: # если "7-2"
+        dlina += 1.5
+        
+    elif massiv[i] == 6 and massiv[i+1] == 7: # если "6-7"
+        dlina += 1.5 * 2
+        
+    elif massiv[i] == 7 and massiv[i+1] == 6: # если "7-6"
+        dlina += 1.5 * 2
+        
+    elif massiv[i] == 2 and massiv[i+1] != 6: # если 2 и не 6
+        # либо след. число больше 2
+        if massiv[i+1] > massiv[i]:
+            digit_counter = massiv[i]
+            while massiv[i+1] > digit_counter:
+                dlina += 1
+                digit_counter += 1
+                
+        # либо след. число меньше 2
+        elif massiv[i+1] < massiv[i]:
+            digit_counter = massiv[i]
+            while massiv[i+1] < digit_counter:
+                dlina += 1
+                digit_counter -= 1
+                
+    elif massiv[i] == 6 and massiv[i+1] != 2: # если 6 и не 2    
+        # либо след. число больше 6
+        # заглушка - доработаем дальше
+        
+        # либо след. число меньше 6
+        if massiv[i+1] < massiv[i]:
+            digit_counter = massiv[i]
+            while massiv[i+1] < digit_counter:
+                dlina += 1
+                digit_counter -= 1
+            
+    elif massiv[i+1] > massiv[i]: # если след. эл-т > текущего
+        digit_counter = massiv[i]
+        while massiv[i+1] > digit_counter:
+            dlina += 1
+            digit_counter += 1
+            
+    elif massiv[i+1] < massiv[i]: # если след. эл-т < текущего
+        digit_counter = massiv[i]
+        while massiv[i+1] < digit_counter:
+            dlina += 1
+            digit_counter -= 1
+  
+print('dlina =', dlina)
+
+
+
