@@ -345,5 +345,68 @@ for i in range(len(massiv)-1):
   
 print('dlina =', dlina)
 
+# 9 - проход вперед и назад кроме случаев типа 9-2
 
+# 8 - обработка линий до 7 и назад
 
+massiv = [7, 6]
+dlina = 0
+digit_counter = 0
+
+for i in range(len(massiv)-1):
+    
+    # если след. цифра равна текущей:
+    if massiv[i+1] == massiv[i]:
+        continue
+
+    elif massiv[i] == 6 and massiv[i+1] == 2: # если "6-2"
+        dlina += 1.5       
+    
+    elif massiv[i] == 2 and massiv[i+1] == 6: # если "2-6"
+        dlina += 1.5
+        
+    elif massiv[i] == 2 and massiv[i+1] == 7: # если "2-7"
+        dlina += 1.5
+        
+    elif massiv[i] == 7 and massiv[i+1] == 2: # если "7-2"
+        dlina += 1.5
+        
+    elif massiv[i] == 6 and massiv[i+1] == 7: # если "6-7"
+        dlina += 1.5 * 2
+        
+    elif massiv[i] == 7 and massiv[i+1] == 6: # если "7-6"
+        dlina += 1.5 * 2
+            
+    # отработаем вариант с отслеживанием digital_counter
+    elif massiv[i+1] > massiv[i]: # если след. эл-т > текущего
+        digit_counter = massiv[i]
+        while massiv[i+1] > digit_counter:
+            digit_counter += 1
+            
+        # делаем проверку digit_counter
+            if digit_counter <= 6:
+                dlina += 1
+                
+            elif digit_counter == 7:
+                dlina += 1.5 * 2
+            
+            elif digit_counter >= 8:
+                dlina += 1
+        
+    elif massiv[i+1] < massiv[i]: # если след. эл-т < текущего
+        digit_counter = massiv[i]
+        while massiv[i+1] < digit_counter:
+            digit_counter -= 1
+            
+        # делаем проверку digit_counter
+            if digit_counter >= 7:
+                dlina += 1
+                
+            elif digit_counter == 6:
+                dlina += 1.5 * 2
+                
+            elif digit_counter < 6:
+                dlina += 1
+                    
+  
+print('dlina =', dlina)
