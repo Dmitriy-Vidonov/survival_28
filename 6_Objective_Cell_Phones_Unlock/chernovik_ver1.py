@@ -345,11 +345,9 @@ for i in range(len(massiv)-1):
   
 print('dlina =', dlina)
 
-# 9 - проход вперед и назад кроме случаев типа 9-2
+# 9 - проход вперед и назад + случай 9-2
 
-# 8 - обработка линий до 7 и назад
-
-massiv = [7, 6]
+massiv = [1, 7]
 dlina = 0
 digit_counter = 0
 
@@ -378,7 +376,8 @@ for i in range(len(massiv)-1):
         dlina += 1.5 * 2
             
     # отработаем вариант с отслеживанием digital_counter
-    elif massiv[i+1] > massiv[i]: # если след. эл-т > текущего
+    # если след. эл-т > текущего
+    elif massiv[i+1] > massiv[i]: 
         digit_counter = massiv[i]
         while massiv[i+1] > digit_counter:
             digit_counter += 1
@@ -392,8 +391,9 @@ for i in range(len(massiv)-1):
             
             elif digit_counter >= 8:
                 dlina += 1
-        
-    elif massiv[i+1] < massiv[i]: # если след. эл-т < текущего
+                
+    # если след. эл-т < текущего и идем не до 2
+    elif massiv[i+1] < massiv[i] and massiv[i+1] != 2:
         digit_counter = massiv[i]
         while massiv[i+1] < digit_counter:
             digit_counter -= 1
@@ -407,6 +407,15 @@ for i in range(len(massiv)-1):
                 
             elif digit_counter < 6:
                 dlina += 1
+                
+    # отрабатываем случаи, когда идем до 2-ки c 9
+    elif massiv[i] >= 7 and massiv[i+1] == 2:
+        digit_counter = massiv[i]
+        while digit_counter > 7:
+            digit_counter -= 1
+            dlina += 1
+        if digit_counter == 7:
+            dlina += 1.5
+        break
                     
-  
 print('dlina =', dlina)
