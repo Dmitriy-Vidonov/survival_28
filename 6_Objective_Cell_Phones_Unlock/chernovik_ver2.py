@@ -12,6 +12,8 @@ length = 0
 x_coord = []
 y_coord = []
 
+codes = [1, 2]
+
 # сформировали матрицу matrix[]
 for i in range(3):
     b = [] # на каждом шаге делаем очередной вложенный подсписок
@@ -39,12 +41,6 @@ for x in range(len(matrix)):
 print()
 print()
 
-# задаем массив с кодами разблокировки (входные данные)
-codes = [2, 6]
-
-# вывод входного массива на экран
-print('codes =', codes)
-
 # по всем элементам массива с кодами разблокировки
 for k in range(len(codes)):
     # ищем координаты элементов из codes (входные данные) в matrix (начальная матрица)
@@ -58,26 +54,75 @@ for k in range(len(codes)):
 print('x_coord =', x_coord)
 print('y_coord =', y_coord)
 
-# обрабатываем координаты элементов и считаем длину
-for i in range(len(x_coord)-1):
-    # горизонталь от центрального элемента
-    if x_coord[i+1] == x_coord[i] and y_coord[i+1] - y_coord[i] == 1 or y_coord[i+1] - y_coord[i] == -1:
-        length += 1
-    
-    # вертикаль от центрального элемента
-    elif y_coord[i+1] == y_coord[i] and x_coord[i+1] - x_coord[i] == 1 or x_coord[i+1] - x_coord[i] == -1:
-        length += 1
-
-    # 1-я диагональ - от левого нижнего края к правому верхнему
-    elif x_coord[i+1] - x_coord[i] == -1 or x_coord[i+1] - x_coord[i] == 1 \
-        and y_coord[i+1] - y_coord[i] == 1 or y_coord[i+1] - y_coord[i] == 0:
-        length += 1.5
-
-    # 2-я диагональ - от левого верхнего края к правому нижнему
-    elif x_coord[i+1] - x_coord[i] == 1 or x_coord[i+1] - x_coord[i] == 0 \
-        and y_coord[i+1] - y_coord[i] == 1 or y_coord[i+1] - y_coord[i] == 0:
-        length += 1.5
-
-# контрольный вывод
 print()
-print('Length =', length)
+
+# *******************URGENT CORRECTIONS*******************
+# выяснилось, что в данной задаче следует просто тупым перебором обозначить возможные длины между элементами
+# нужен просто большой if для нахождения допустимого соседа или массив допустимых пар переходов
+
+codes = [5, 7]
+
+extra_len = 1.5
+
+print('codes =', codes)
+
+for i in range(len(codes)-1):
+    # связи в верхней половине квадрата
+    if codes[i] == 1 and codes[i+1] == 6 or codes[i] == 6 and codes[i+1] == 1: length += 1
+    elif codes[i] == 1 and codes[i+1] == 5 or codes[i] == 5 and codes[i+1] == 1: length += extra_len
+    elif codes[i] == 1 and codes[i+1] == 2 or codes[i] == 2 and codes[i+1] == 1: length += 1
+    elif codes[i] == 1 and codes[i+1] == 8 or codes[i] == 8 and codes[i+1] == 1: length += extra_len
+    elif codes[i] == 1 and codes[i+1] == 9 or codes[i] == 9 and codes[i+1] == 1: length += 1
+    
+    # связи в нижней половине квадрата
+    elif codes[i] == 3 and codes[i+1] == 4 or codes[i] == 4 and codes[i+1] == 3: length += 1
+    elif codes[i] == 3 and codes[i+1] == 5 or codes[i] == 5 and codes[i+1] == 3: length += extra_len
+    elif codes[i] == 3 and codes[i+1] == 2 or codes[i] == 2 and codes[i+1] == 3: length += 1
+    elif codes[i] == 3 and codes[i+1] == 8 or codes[i] == 8 and codes[i+1] == 3: length += extra_len
+    elif codes[i] == 3 and codes[i+1] == 7 or codes[i] == 7 and codes[i+1] == 3: length += 1
+
+    # связи в левой половине квадрата
+    elif codes[i] == 5 and codes[i+1] == 6 or codes[i] == 6 and codes[i+1] == 5: length += 1
+    elif codes[i] == 5 and codes[i+1] == 2 or codes[i] == 2 and codes[i+1] == 5: length += 1
+    elif codes[i] == 5 and codes[i+1] == 4 or codes[i] == 4 and codes[i+1] == 5: length += 1
+
+    # связи в правой половине квадрата
+    elif codes[i] == 8 and codes[i+1] == 9 or codes[i] == 9 and codes[i+1] == 8: length += 1
+    elif codes[i] == 8 and codes[i+1] == 2 or codes[i] == 2 and codes[i+1] == 8: length += 1
+    elif codes[i] == 8 and codes[i+1] == 7 or codes[i] == 7 and codes[i+1] == 8: length += 1
+    
+    # связи от 2 по диагоналям
+    elif codes[i] == 2 and codes[i+1] == 6 or codes[i] == 6 and codes[i+1] == 2: length += extra_len
+    elif codes[i] == 2 and codes[i+1] == 4 or codes[i] == 4 and codes[i+1] == 2: length += extra_len
+    elif codes[i] == 2 and codes[i+1] == 7 or codes[i] == 7 and codes[i+1] == 2: length += extra_len
+    elif codes[i] == 2 and codes[i+1] == 9 or codes[i] == 9 and codes[i+1] == 2: length += extra_len
+    
+    # непрямые связи для 1
+    elif codes[i] == 1 and codes[i+1] == 4 or codes[i] == 4 and codes[i+1] == 1: length += (1 + extra_len)
+    elif codes[i] == 1 and codes[i+1] == 3 or codes[i] == 3 and codes[i+1] == 1: length += (1 + 1)
+    elif codes[i] == 1 and codes[i+1] == 7 or codes[i] == 7 and codes[i+1] == 1: length += (1 + extra_len)
+
+    # непрямые связи для 3
+    elif codes[i] == 3 and codes[i+1] == 6 or codes[i] == 6 and codes[i+1] == 3: length += (1 + extra_len)
+    elif codes[i] == 3 and codes[i+1] == 9 or codes[i] == 9 and codes[i+1] == 3: length += (1 + extra_len)
+
+    # непрямые связи для 4
+    elif codes[i] == 4 and codes[i+1] == 6 or codes[i] == 6 and codes[i+1] == 4: length += (1 + 1)
+    elif codes[i] == 4 and codes[i+1] == 9 or codes[i] == 9 and codes[i+1] == 4: length += (extra_len + extra_len)
+    elif codes[i] == 4 and codes[i+1] == 8 or codes[i] == 8 and codes[i+1] == 4: length += (1 + extra_len)
+    elif codes[i] == 4 and codes[i+1] == 7 or codes[i] == 7 and codes[i+1] == 4: length += (1 + 1)
+
+    # непрямые связи для 5
+    elif codes[i] == 5 and codes[i+1] == 9 or codes[i] == 9 and codes[i+1] == 5: length += (1 + extra_len)
+    elif codes[i] == 5 and codes[i+1] == 8 or codes[i] == 8 and codes[i+1] == 5: length += (1 + 1)
+    elif codes[i] == 5 and codes[i+1] == 7 or codes[i] == 7 and codes[i+1] == 5: length += (1 + extra_len)
+
+    # непрямые связи для 6
+    elif codes[i] == 6 and codes[i+1] == 9 or codes[i] == 9 and codes[i+1] == 6: length += (1 + 1)
+    elif codes[i] == 6 and codes[i+1] == 8 or codes[i] == 8 and codes[i+1] == 6: length += (1 + extra_len)
+    elif codes[i] == 6 and codes[i+1] == 7 or codes[i] == 7 and codes[i+1] == 6: length += (extra_len + extra_len)
+    
+    # непрямые связи для 7
+    elif codes[i] == 7 and codes[i+1] == 9 or codes[i] == 9 and codes[i+1] == 7: length += (1 + 1)
+
+print('length =', length)
