@@ -1,24 +1,24 @@
-# все работы над преобразованием полученного при расчете длины числа - в первой версии черновика
-# как оказалось, расчет длины следует делает иначе - как в матрице, свободно передвигаясь к 
-# к ближайшим элементам, а не идя строго по линии, как я изначально предполагал
+import math
 
-# создаем рабочую матрицу
-matrix = []
+# 2 вспомогательных массива для преобразования числа
+test_massiv = []
+inverted_massiv = []
 
-# задаем переменную длины линии
-length = 0
+itog_number = 0 # число без запятых, с округлением до 5-ти знаков
 
-# задаем массив для координат x и y по отдельности
-x_coord = []
-y_coord = []
+matrix = [] # матрица для хранения чисел
 
-codes = [1, 2]
+length = 0 # переменная для хранения длины последовательности
+
+codes = [1, 2, 3, 4, 5, 6, 7, 8, 9] # входные значения
+
+extra_len = math.sqrt(1 ** 2 + 1 ** 2) # 1.41... - вычисление расстояния по диагонали
 
 # сформировали матрицу matrix[]
 for i in range(3):
     b = [] # на каждом шаге делаем очередной вложенный подсписок
     for j in range(3):
-        b.append(0) # заполrounded_sum = round(length, 5) # округлять результат нужно до 5-ти цифр после запятойняем базовые значения массива
+        b.append(0) 
     matrix.append(b)
 
 # заполняем матрицу
@@ -32,40 +32,7 @@ matrix[2][0] = 4
 matrix[2][1] = 3
 matrix[2][2] = 7
 
-# выводим матрицу на экран
-for x in range(len(matrix)):
-    print()
-    for y in range(len(matrix[x])):
-        print(' ', matrix[x][y], end = ' ')
-
-print()
-print()
-
-# по всем элементам массива с кодами разблокировки
-for k in range(len(codes)):
-    # ищем координаты элементов из codes (входные данные) в matrix (начальная матрица)
-    for i in range(3): # 3x3 - размерность матрицы, не меняется по условиям
-        for j in range(3):
-            if matrix[i][j] == codes[k]:
-                x_coord.append(i)
-                y_coord.append(j)
-
-# проверка полученных значений
-print('x_coord =', x_coord)
-print('y_coord =', y_coord)
-
-print()
-
-# *******************URGENT CORRECTIONS*******************
-# выяснилось, что в данной задаче следует просто тупым перебором обозначить возможные длины между элементами
-# нужен просто большой if для нахождения допустимого соседа или массив допустимых пар переходов
-
-codes = [5, 7]
-
-extra_len = 1.5
-
-print('codes =', codes)
-
+# прописываем расчет путей между элементами матрицы
 for i in range(len(codes)-1):
     # связи в верхней половине квадрата
     if codes[i] == 1 and codes[i+1] == 6 or codes[i] == 6 and codes[i+1] == 1: length += 1
@@ -125,4 +92,38 @@ for i in range(len(codes)-1):
     # непрямые связи для 7
     elif codes[i] == 7 and codes[i+1] == 9 or codes[i] == 9 and codes[i+1] == 7: length += (1 + 1)
 
-print('length =', length)
+rounded_sum = round(length, 5) # округлять результат нужно до 5-ти цифр после запятой
+
+i = float(10)
+
+while rounded_sum % i != 0:
+    rounded_sum *= i
+    i *= 10
+
+itog_number = int(round((i * length), 0))
+
+# далее предусмотреть исключение нолей из числа
+# взять любое тестовое число, перегнать его в массив, исключая '0'
+# потом этот массив преобразовать в строку
+
+i = 10
+el = 0
+
+# формируем массив значений без "0"
+while itog_number != 0:
+    el = itog_number % i
+    if el == 0:
+        itog_number = int(itog_number/i)
+    else:
+        test_massiv.append(el)
+        itog_number = int(itog_number/i)
+
+# инвертируем полученный ранее массив в норм. вид
+for x in range(len(test_massiv)-1, -1, -1):
+    inverted_massiv.append(test_massiv[x])
+
+# создаем строку из списка
+# при добавлении эл-тов преобразуем int в str
+stroka = ''.join(str(e) for e in inverted_massiv)
+
+print(stroka)
