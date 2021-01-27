@@ -1,4 +1,4 @@
-stroka = 'раз два три'
+stroka = 'раз два три четыре'
 massiv = list(stroka)
 
 print(massiv)
@@ -25,14 +25,14 @@ for i in range(len(massiv)-1):
         count += 1
         
 print('count =', count)
-
+j_count = 0
 # запишем каждое отдельное слово как элемент массива
-j = 0
-for k in range(count):
+for j in range(len(massiv)):
     if massiv[j] != ' ':
         b.append(massiv[j])
-        j += 1
     elif massiv[j] == ' ':
         a.append(b)
+        b = []
+a.append(b)
     
 print('a =', a)
