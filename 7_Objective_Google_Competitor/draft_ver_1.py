@@ -1,4 +1,4 @@
-stroka = 'раз два три четыре'
+stroka = 'одна проверочная строка с длинными словулечищщами'
 massiv = list(stroka)
 
 print(massiv)
@@ -7,11 +7,6 @@ a = []
 b = []
 
 count = 0 # количество слов в массиве
-
-# надо посчитать число слов в массиве (ОК), чтобы потом по их числу 
-# прогнать цикл, в котором каждое слово мы занесем как строку в двумерную матрицу
-# затем можно будет оценивать длину каждой строки и решать - уместится ли она в нужную ширину или нет
-# так же и слова можно будет искать по строкам
 
 # определяем число слов в массиве
 
@@ -36,3 +31,27 @@ for j in range(len(massiv)):
 a.append(b)
     
 print('a =', a)
+
+mat_a = []
+mat_b = []
+strok_v_mat_a = 0
+shirina = 12
+
+if len(stroka) % shirina == 0:
+    strok_v_mat_a = len(stroka) / shirina
+else:
+    strok_v_mat_a = len(stroka) // shirina + 1
+
+curr_el = 0
+for M in range(strok_v_mat_a):
+    mat_b = []
+    for N in range(shirina):
+        if curr_el < len(massiv):
+            mat_b.append(massiv[curr_el])
+            curr_el += 1
+        else:
+            continue
+    mat_a.append(mat_b)
+
+#print('mat_a =', mat_a)
+print(len(a[0])) # число символов в первом слове строки
