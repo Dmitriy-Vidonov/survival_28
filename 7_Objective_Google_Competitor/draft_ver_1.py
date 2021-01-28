@@ -88,3 +88,14 @@ print('len(mat_b) =', dlina_stroki)
 
 mat_a.append(mat_b)
 unfilled_cells = shirina - dlina_stroki # посчит. незап. яч.
+
+print('mat_a[0] =', mat_a[0])
+
+chto_ischem = 'аушвен'
+slovo_na_poisk = list(chto_ischem)
+
+# ищем слово в строке "стакана"
+if slovo_na_poisk in mat_a[0]:
+    print('нашли', slovo_na_poisk, 'в массиве')
+else:
+    print(slovo_na_poisk, 'не найдено в массиве')
