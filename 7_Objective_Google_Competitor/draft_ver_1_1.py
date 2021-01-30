@@ -91,11 +91,3 @@ else:
     rows_count_in_big_w = int(len(big_w_massiv) // shirina + 1)
 
 # вписываем большое слово в несколько строк "стакана"
-mat_b = []
-for i in range(len(big_w_massiv)):
-    if i < shirina:
-        mat_b.append(big_w_massiv[i])
-    else:
-        mat_a.append(mat_b)
-        mat_b = []
-        
