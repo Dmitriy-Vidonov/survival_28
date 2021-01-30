@@ -78,16 +78,4 @@ if slovo_na_poisk in mat_a[0]:
 else:
     print(slovo_na_poisk, 'не найдено в массиве')
     
-# перенос большого слова в след. строку "стакана"
-big_word = 'алеундецойтгебурстагенвагенпляц'
-big_w_massiv = list(big_word)
 
-# считаем - на сколько строк растянется наше слово
-rows_count_in_big_w = 0
-
-if len(big_w_massiv) % shirina == 0:
-    rows_count_in_big_w = int(len(big_w_massiv) / shirina)
-else:
-    rows_count_in_big_w = int(len(big_w_massiv) // shirina + 1)
-
-# вписываем большое слово в несколько строк "стакана"
