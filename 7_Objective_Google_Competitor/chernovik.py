@@ -18,3 +18,56 @@ while text:  # до тех пор, пока в тексте есть элеме�
 for s in rows:
     print(s)
     
+
+#********************
+
+shirina = 12
+stroka = 'ыворвлоллаушвен hjhjkjhjkjhj цумгертаус jhg sdfs'
+w_massiv = stroka.split()
+rows = []
+for word in range(len(w_massiv)):
+    if len(w_massiv[word]) <= shirina:
+        rows.append(w_massiv[word])
+        
+    elif len(w_massiv[word]) == shirina:
+        for i in range(shirina, 0, -1):
+            rows.append(w_massiv[word][:i])
+            w_massiv[word] = w_massiv[word][i:]
+            
+    elif len(w_massiv[word]) > shirina:
+        for i in range(shirina, 0, -1):
+            if w_massiv[word] != ' ':
+                rows.append(w_massiv[word][:i])
+                w_massiv[word] = w_massiv[word][i:]
+                break
+            
+#********************
+
+shirina = 12
+text = 'алеундецойтебурssdsdsdsdsd kjhgkj'
+stroka = text.split()
+rows = []
+matrix = []
+unfilled_cells = shirina
+
+for word_in_stroka in range(len(stroka)):
+    while stroka[word_in_stroka]:
+    
+        if len(stroka[word_in_stroka]) <= shirina:
+            unfilled_cells = shirina
+            rows = []
+            for m in range(len(stroka[word_in_stroka])):
+                rows.append(stroka[word_in_stroka][m])
+                unfilled_cells -= 1
+            matrix.append(rows)
+            stroka[word_in_stroka] = ''
+    
+        elif len(stroka[word_in_stroka]) > shirina:
+            unfilled_cells = shirina
+            rows = []
+            for k in range(shirina):
+                rows.append(stroka[word_in_stroka][k])
+                unfilled_cells -= 1
+            stroka[word_in_stroka] = stroka[word_in_stroka][k+1:]
+            matrix.append(rows)
+        
