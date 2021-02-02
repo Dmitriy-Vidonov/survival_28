@@ -1,5 +1,4 @@
-# алгоритм разбивки работает как надо. здесь только допилить поиск слова нужно
-stroka = '1) строка разбивadasdasdasdается на набор строк через выравнивание по заданной ширине.'
+stroka = '1) строка разбивaется на набор 2 строк через выравнивание по заданной ширине.'
 
 stroka_list = list(stroka)
 
@@ -35,7 +34,13 @@ digits = []
 find_this = 'строк'
 
 for x in range(len(spisok_strok)):
-    if spisok_strok[x].find(find_this) != -1:
+    if find_this in spisok_strok[x] and len(find_this) == len(spisok_strok[x]):
+        digits.append(1)
+    elif (' ' + find_this + ' ') in spisok_strok[x]:
+        digits.append(1)
+    elif find_this[0] == spisok_strok[x][0] and (find_this + ' ') in spisok_strok[x]:
+        digits.append(1)
+    elif find_this[len(find_this)-1] == spisok_strok[x][len(spisok_strok[x])-1] and (' ' + find_this) in spisok_strok[x]:
         digits.append(1)
     else:
         digits.append(0)

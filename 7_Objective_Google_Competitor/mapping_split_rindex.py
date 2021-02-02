@@ -1,3 +1,6 @@
+# хороший список операций со строками
+# https://habr.com/ru/company/ruvds/blog/500296/
+
 # возвращаем длину слова
 def word_len(words):
     return len(words)
@@ -18,6 +21,9 @@ print(last_probel_position)
 print(str.isspace(stroka)) # false, так как есть и обычные буквы кроме символов whitespace
 
 # применение [:n]
+
+#string[start_index:end_index:step]
+
 stroka = 'Hello world!'
 print(stroka[2:]) # пропустили 2 символа с начала            | llo world!
 print(stroka[:2]) # напечатали только 2 символа сначала      | He
