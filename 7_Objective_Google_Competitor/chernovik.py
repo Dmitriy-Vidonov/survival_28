@@ -34,13 +34,17 @@ digits = []
 find_this = 'строк'
 
 for x in range(len(spisok_strok)):
-    if find_this in spisok_strok[x] and len(find_this) == len(spisok_strok[x]):
+    if find_this in spisok_strok[x] \
+        and len(find_this) == len(spisok_strok[x]):
         digits.append(1)
     elif (' ' + find_this + ' ') in spisok_strok[x]:
         digits.append(1)
-    elif find_this[0] == spisok_strok[x][0] and (find_this + ' ') in spisok_strok[x]:
+    elif find_this[0] == spisok_strok[x][0] \
+        and (find_this + ' ') in spisok_strok[x]:
         digits.append(1)
-    elif find_this[len(find_this)-1] == spisok_strok[x][len(spisok_strok[x])-1] and (' ' + find_this) in spisok_strok[x]:
+    elif find_this[len(find_this)-1] == \
+        spisok_strok[x][len(spisok_strok[x])-1] \
+        and (' ' + find_this) in spisok_strok[x]:
         digits.append(1)
     else:
         digits.append(0)

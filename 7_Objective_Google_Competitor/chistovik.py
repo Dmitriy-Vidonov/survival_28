@@ -42,3 +42,9 @@ def WordSearch(dlina: int, s: str, subs: str):
             digits.append(0)
         
     return digits
+
+#example
+s = '1) строка разбивается на набор строк через выравнивание по заданной ширине.'
+dlina = 12
+subs = 'строк'
+print(WordSearch(dlina, s, subs))
