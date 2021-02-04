@@ -5,7 +5,10 @@ a = []
 
 curr_el = 0
 
-stroka_default = 'отдай мою кроличью лапку1234'
+strok_mas = []
+shifr = []
+
+stroka_default = 'отдай мою кроличью лапку'
 
 stroka = stroka_default.replace(' ', '') #убираем пробелы из строки
 
@@ -26,6 +29,14 @@ while rows * cols < N:
     else:
         cols += 1
 
+# добавляем в строку пробелы до ровного счета
+if len(stroka) < cols * rows:
+    strok_mas = list(stroka) # преобразовали строку в список   
+    for x in range(cols * rows - len(stroka)):
+        strok_mas.append(' ')
+stroka = ''.join(strok_mas) # преобразовали список в строку
+
+
 # сформировали матрицу а[]
 while stroka:
     if len(stroka) <= cols:
@@ -44,13 +55,12 @@ for x in range(len(a)): # главный цикл по числу строк - �
         print('', a[x][y], end = '')
 print()
 
-shifr = []
-
 # выдаем зашифрованный результат
 for i in range(cols):
     for j in range(rows):
         if a[j][i] != ' ': shifr.append(a[j][i])
         else: continue
-    shifr.append(' ')
+    if i < cols - 1:
+        shifr.append(' ') # выводить до cols - 1
 
 print(shifr)
