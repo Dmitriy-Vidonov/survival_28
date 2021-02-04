@@ -37,7 +37,7 @@ if len(stroka) < cols * rows:
     strok_mas = list(stroka) # преобразовали строку в список   
     for x in range(cols * rows - len(stroka)):
         strok_mas.append(' ')
-stroka = ''.join(strok_mas) # преобразовали список в строку
+    stroka = ''.join(strok_mas) # преобразовали список в строку
 
 
 # сформировали матрицу а[]
