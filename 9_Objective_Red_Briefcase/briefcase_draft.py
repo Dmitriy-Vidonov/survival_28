@@ -1,14 +1,17 @@
 import math
 
 a = []
-# b = []
-
 curr_el = 0
-
 strok_mas = []
 shifr = []
+final_stroka = ''
+temp_spisok = [] # временный список для формирования матрицы перед преобразованием
+count = 0
+itog_massiv = []
 
 stroka_default = 'отдай мою кроличью лапку'
+
+print(stroka_default)
 
 stroka = stroka_default.replace(' ', '') #убираем пробелы из строки
 
@@ -63,4 +66,68 @@ for i in range(cols):
     if i < cols - 1:
         shifr.append(' ') # выводить до cols - 1
 
-print(shifr)
+final_stroka = ''.join(shifr)
+print(final_stroka) # выводим именно строку
+
+
+# ***************** decrypting омоюу толл дюиа акчп йрьк *****************
+
+final_stroka = 'омоюу толл дюиа акчп йрьк'
+
+working_stroka = final_stroka.replace(' ', '') # убрали пробелы
+
+N = len(working_stroka) # узнали длину строки
+
+koren = math.sqrt(N) # квадратный корень - 4.58
+
+rows = int(koren) # нижняя граница корня - число строк матрицы - 4
+cols = math.ceil(koren) # верхняя граница корня - число столбцов матрицы - 5
+
+# выясняем, хватит ли размеров матрицы чтобы уместить весь текст
+while rows * cols < N:
+    if rows < cols:
+        rows += 1
+    elif rows == cols:
+        rows += 1
+        cols += 1
+    else:
+        cols += 1
+
+a = []
+
+# распределили строку на строчки в списке
+while final_stroka:
+    if len(final_stroka) <= cols:
+        a.append(final_stroka)
+        final_stroka = ''
+    else:
+         for i in range(cols, 0, -1):
+            a.append(final_stroka[:i])
+            final_stroka = final_stroka[i:]
+            break
+
+for x in range(len(a)):
+    count = 0
+    for y in range(len(a[x])):
+        if a[x][y] == ' ':
+            count += 1
+    if count > 0: # на тот случай, если в строке прбелы были
+        a[x] = a[x].replace(' ', '') # убираем из строки пробелы
+        temp_spisok = list(a[x]) # преобразование в список
+        temp_spisok.append(' ') # добавление к списку пробела
+        a[x] = ''.join(temp_spisok) # перевод снова в строку
+    else:
+        continue
+
+print(a)
+
+cols = len(a[0])
+rows = len(a)
+
+for x in range(cols):
+    for y in range(rows):
+        itog_massiv.append(a[y][x]) 
+
+final = ''.join(itog_massiv)
+
+print(final)
