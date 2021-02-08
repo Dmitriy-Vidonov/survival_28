@@ -122,7 +122,3 @@ def TheRabbitsFoot(s: str, encode: bool) -> str:
         final = ''.join(itog_massiv)
 
         return final
-
-#example
-s = 'омоюу толл дюиа акчп йрьк'
-print(TheRabbitsFoot(s, False))
