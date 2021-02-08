@@ -136,3 +136,11 @@ def TheRabbitsFoot(s: str, encode: bool) -> str:
         final = final.replace(' ', '') 
 
         return final
+
+s = 'отдай мою кроличью лапку троепиздоблядская хуетварина сил моих больше нет ждать от тебя ебучую лапку'
+
+print('исходный текст -', s)
+
+print('зашифрованный текст -', TheRabbitsFoot(s, True))
+
+print('дешифрованный текст -', TheRabbitsFoot(TheRabbitsFoot(s, True), False))
