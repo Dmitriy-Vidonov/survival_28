@@ -36,6 +36,3 @@ def PrintingCosts(Line: str) -> int:
         sum += x
     
     return sum
-
-Line = ' zzzа'
-print(PrintingCosts(Line)) # 80 с русской "а" не из списка
