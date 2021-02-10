@@ -3,15 +3,19 @@ import math
 def razryad(some_list) -> int:
     razryad = 0
 
-    for i in range(len(some_list)-1):
-        if len(some_list) == 1:
-            razryad = 1
-            break
-        else:
-            if i == 0:
-                razryad += 10
-            elif i > 0:
-                razryad *= 10
+    if len(some_list) == 1:
+        razryad = 1
+        
+    else:
+        for i in range(len(some_list)-1):
+            if len(some_list) == 1:
+                razryad = 1
+                break
+            else:
+                if i == 0:
+                    razryad += 10
+                elif i > 0:
+                    razryad *= 10
 
     return razryad
 
@@ -36,6 +40,6 @@ def BigMinus(s1: str, s2: str) -> str:
     return str(abs(s1 - s2))
 
 x = '111'
-y = '555'
+y = '1'
 
 print(BigMinus(x, y))

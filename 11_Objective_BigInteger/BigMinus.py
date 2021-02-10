@@ -3,15 +3,19 @@ import math
 def razryad(some_list) -> int:
     razryad = 0
 
-    for i in range(len(some_list)-1):
-        if len(some_list) == 1:
-            razryad = 1
-            break
-        else:
-            if i == 0:
-                razryad += 10
-            elif i > 0:
-                razryad *= 10
+    if len(some_list) == 1:
+        razryad = 1
+        
+    else:
+        for i in range(len(some_list)-1):
+            if len(some_list) == 1:
+                razryad = 1
+                break
+            else:
+                if i == 0:
+                    razryad += 10
+                elif i > 0:
+                    razryad *= 10
 
     return razryad
 
