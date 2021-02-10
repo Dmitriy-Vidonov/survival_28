@@ -34,8 +34,3 @@ def BigMinus(s1: str, s2: str) -> str:
     s2 = list_to_num(s2)
 
     return str(abs(s1 - s2))
-
-x = '111'
-y = '555'
-
-print(BigMinus(x, y))
